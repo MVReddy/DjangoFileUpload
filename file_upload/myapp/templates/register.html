@@ -1,0 +1,43 @@
+
+{% block content %}
+{% if error %}
+<p>{{error}}</p>
+{% endif %}
+{% if user.username %}
+<p>{{user.username}} Created Successfully</p>
+{% endif %}
+
+<form id="register_form" method="post" action="{% url 'register' %}">
+{% csrf_token %}
+<table>
+    <th>Registration Form</th>
+    <tr>
+        <td>
+            Email:
+        </td>
+        <td>
+            <input type="text" name="email" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Username:
+        </td>
+        <td>
+            <input type="text" name="username" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Password:
+        </td>
+        <td>
+            <input type="text" name="password" value="" />
+        </td>
+    </tr>
+
+</table>
+<input type="submit" value="Register" />
+<p>Already have an account. Please <a href="{% url 'login' %}">login here</a></p>
+</form>
+{% endblock %}
